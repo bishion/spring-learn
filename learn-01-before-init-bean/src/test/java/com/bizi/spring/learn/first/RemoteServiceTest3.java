@@ -1,22 +1,26 @@
 package com.bizi.spring.learn.first;
 
 
-import com.bizi.spring.learn.first.service.RemoteService;
+import com.bizi.spring.learn.first.service.BizService;
+import org.junit.Assert;
 import org.junit.Test;
-
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
 
-@SpringBootTest(classes = MockRemoteService2.class)
+
+@SpringBootTest(classes = {Application.class,MockRemoteService3.class})
 @RunWith(SpringRunner.class)
-public class RemoteServiceTest {
+public class RemoteServiceTest3 {
+
     @Resource
-    private RemoteService remoteService;
+    BizService bizService;
+
     @Test
     public void getRepFromRemote() {
-        System.out.println(remoteService.getRepFromRemote(123));
+        Assert.assertEquals("Remote says: Hello , I am mock3",bizService.doSthByRemote());
     }
+
 }
